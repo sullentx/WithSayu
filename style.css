@@ -1,0 +1,20 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.title-h1{
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    background-color: rgb(196, 68, 207);
+    color: aliceblue;
+}
+.size{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin: 5px;
+    
+}
