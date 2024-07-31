@@ -1,10 +1,8 @@
-import ArayListByEduAndSayu from "../model/ArrayList";
-
- const array = new ArayListByEduAndSayu();
+import ArayListByEduAndSayu from "../model/ArrayList.mjs";
+import Matriz from "../model/Matriz.mjs";
+const array = new ArayListByEduAndSayu();
 
 console.log(array.isEmpty)
-
-
 
 let filaSize = document.getElementById("fila-ipt");
 let columnSize = document.getElementById("columna-ipt");
@@ -15,6 +13,7 @@ let sumSearch = document.getElementById("suma-ipt");
 let sumSearchBtn = document.getElementById("btn-search");
 let burble = document.getElementById("burble-btn")
 let matriz = new Matriz();
+
 
 createBtn.addEventListener("click", ()=>{
     let fila = parseInt(filaSize.value);

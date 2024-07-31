@@ -54,3 +54,4 @@ class Matriz{
         }
     }
 }
+export default Matriz;
