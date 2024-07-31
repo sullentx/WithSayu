@@ -17,7 +17,7 @@ class Matriz{
         }
         return matrix;
     }
-    
+
     getMatrix() {
         return this.matrix;
     }

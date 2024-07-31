@@ -3,6 +3,7 @@ import Matriz from "../model/Matriz.mjs";
 const array = new ArayListByEduAndSayu();
 
 console.log(array.isEmpty)
+import Matriz from "../model/Matriz.mjs";
 
 let filaSize = document.getElementById("fila-ipt");
 let columnSize = document.getElementById("columna-ipt");
