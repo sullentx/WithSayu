@@ -17,7 +17,7 @@ class Matriz{
         }
         return matrix;
     }
-    
+
     getMatrix() {
         return this.matrix;
     }
@@ -54,3 +54,4 @@ class Matriz{
         }
     }
 }
+export default Matriz;

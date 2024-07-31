@@ -1,4 +1,4 @@
-
+import Matriz from "../model/Matriz.mjs";
 
 let filaSize = document.getElementById("fila-ipt");
 let columnSize = document.getElementById("columna-ipt");
