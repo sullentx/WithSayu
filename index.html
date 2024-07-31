@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.2/css/dataTables.dataTables.min.css">
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <script src="https://cdn.datatables.net/2.1.2/js/dataTables.min.js"></script>
+
     <title>Complejidad Algoritmica</title>
 </head>
 <body>
@@ -12,40 +18,37 @@
     </div>
 
     <div class="size">
-        <Label>Tamaño de la matriz</Label>
-    </div>
-    <div class="size">
-        <input placeholder="Fila" id="fila-ipt">
-    </div>
-    <div class="size">
-        <input placeholder="Columna" id="columna-ipt">
-    </div>
-    <div class="create-btn">
-        <button id="btn-crear">Crear Matriz</button>
+        <label for="number-size">Tamaño del Array</label>
+        <input type="text" placeholder="Number" id="number-size">
+        <button id="btn-sizeArray">Generar</button>
     </div>
 
     <div class="stuffed">
-        <label>Rellene la matriz</label>
-    </div>
-    
-    <div class="stuffed">
-        <input placeholder="Number" id="number-ipt"></input>
-    </div>
-    <div class="btn-rellenar">
+        <label for="index-ipt">Índice del Elemento</label>
+        <input type="text" id="index-ipt" placeholder="Index">
+        <label for="stuffed-ipt">Rellene el Array</label>
+        <input type="text" id="stuffed-ipt" placeholder="Element">
         <button id="btn-rellenar">Rellenar</button>
     </div>
-    <div class="Number">
-        <label>Ingrese un numero:</label>
-    </div>
-    <div class="Number">
-        <input placeholder="search" id="suma-ipt">
-    </div>
-    <div class="Number">
-        <button id="btn-search">Buscar</button>
+
+    <button id="method-burble">Burble</button>
+
+    <div class="search">
+        <label for="search-ipt">Elemento a Buscar</label>
+        <input type="text" id="search-ipt" placeholder="Element">
+        <button id="btn-binarySearch">Buscar (Busqueda Binaria)</button>
+        <button id="btn-linearSearch">Buscar (Busqueda Lineal)</button>
+        <div id="search-result"></div>
     </div>
 
-    <button id="burble-btn">burble</button>
+    <div id="array-display">
+        <table id="myTable" class="display">
+            
+        </table>
+    </div>
 
-    <script src="../WithSayu/src/controller/script.js"></script>
+    <div id="array-display"></div>
+
+    <script type="module" src="../WithSayu/src/controller/script.mjs"></script>
 </body>
 </html>
