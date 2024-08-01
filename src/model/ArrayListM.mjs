@@ -20,19 +20,32 @@ export default class ArrayListM {
       return this.array;
     }
   
-    bubbleSort() {
-      const arr = this.array.slice(); 
-      const n = arr.length;
-      for (let i = 0; i < n - 1; i++) {
-        for (let j = 0; j < n - 1 - i; j++) {
-          if (arr[j] > arr[j + 1]) {
-            [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+    mergeSort() {
+        const merge = (left, right) => {
+          let result = [];
+          while (left.length && right.length) {
+            if (left[0] < right[0]) {
+              result.push(left.shift());
+            } else {
+              result.push(right.shift());
+            }
           }
-        }
+          return result.concat(left, right);
+        };
+    
+        const sort = (arr) => {
+          if (arr.length < 2) {
+            return arr;
+          }
+          const mid = Math.floor(arr.length / 2);
+          const left = arr.slice(0, mid);
+          const right = arr.slice(mid);
+          return merge(sort(left), sort(right));
+        };
+    
+        this.array = sort(this.array);
       }
-      this.array = arr;
-    }
-  
+    
     binarySearch(target) {
       let low = 0;
       let high = this.array.length - 1;
@@ -57,5 +70,27 @@ export default class ArrayListM {
       }
       return -1;
     }
+
+    findPairsWithSum(target) {
+        const sortedArray = [...this.array].sort((a, b) => a - b);
+        let left = 0;
+        let right = sortedArray.length - 1;
+        const pairs = [];
+    
+        while (left < right) {
+          const sum = sortedArray[left] + sortedArray[right];
+          if (sum === target) {
+            pairs.push([sortedArray[left], sortedArray[right]]);
+            left++;
+            right--;
+          } else if (sum < target) {
+            left++;
+          } else {
+            right--;
+          }
+        }
+    
+        return pairs;
+      }
   }
   
