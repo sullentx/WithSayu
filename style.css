@@ -39,6 +39,11 @@ input[type="number"]::placeholder   {
     color: #adb5bd;
 }
 
+.daddy{
+    display: flex;
+    flex-direction: row;
+}
+
 .size{
     display: flex;
     flex-direction: column;
