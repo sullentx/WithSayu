@@ -1,3 +1,5 @@
+import Mapita from "./Mapita.mjs";
+
 class ArrayListByEduAndSayu {
     constructor(arrayChiquito = []) {
         this.arrayChiquito = arrayChiquito;
@@ -42,6 +44,52 @@ class ArrayListByEduAndSayu {
         const end = performance.now();
         return { pair: null, time: end - start };
     }
+    //Suma de K Logaritmica
+    
+    SumaKLog(K){
+        const start = performance.now();
+        const { sortedArray } = this.mergeSort();
+        this.arrayChiquito = sortedArray;
+
+        let left = 0;
+        let right = this.arrayChiquito.length - 1;
+        while(left < right){
+            const suma = this.arrayChiquito[left] + this.arrayChiquito[right];
+            if(suma === K ){
+                const end = performance.now();
+                const totalTime = end - start;
+                return { pair:[this.arrayChiquito[left], this.arrayChiquito[right]], indices: [left,right], time: totalTime}
+            }else if (suma < K){
+                left++;
+            }else{
+                right--;
+            }
+        }
+        const end = performance.now();
+        const totalTime = end - start;
+        return {pair: null,time:totalTime}
+    }
+        
+    //tiempo constante 
+    SumaKConstante(K) {
+        const start = performance.now();
+        const datitoRegistrado = new Mapita();
+    
+        for (let i = 0; i < this.arrayChiquito.length; i++) {
+            const complement = K - this.arrayChiquito[i];
+            if (datitoRegistrado.has(complement)) {
+                const end = performance.now();
+                const totalTime = end - start;
+                return { pair: [this.arrayChiquito[i], complement], time: totalTime };
+            }
+            datitoRegistrado.set(this.arrayChiquito[i], i);
+        }
+    
+        const end = performance.now();
+        return { pair: null, time: end - start };
+    }
+
+    
 
     // Merge Sort ordenamiento logaritmico 
     mergeSort() {
@@ -78,6 +126,8 @@ class ArrayListByEduAndSayu {
 
     // Búsqueda binaria
     binarySearch(datitoId) {
+        const { sortedArray } = this.mergeSort();  
+        this.arrayChiquito = sortedArray;
         const start = performance.now();
         let left = 0;
         let right = this.arrayChiquito.length - 1;
@@ -86,18 +136,13 @@ class ArrayListByEduAndSayu {
             const mid = Math.floor((left + right) / 2);
             if (this.arrayChiquito[mid] === datitoId) {
                 const end = performance.now();
-                const totalTimeSearch = end - start;
-                return { found: true, time: totalTimeSearch };
+                return { found: true, time: end - start };
             } else if (this.arrayChiquito[mid] < datitoId) {
                 left = mid + 1;
             } else {
                 right = mid - 1;
             }
         }
-
-        const end = performance.now();
-        const totalTimeSearch = end - start;
-        return { found: false, time: totalTimeSearch };
     }
 
     isEmpty() {
