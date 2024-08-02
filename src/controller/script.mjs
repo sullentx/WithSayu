@@ -1,7 +1,6 @@
 import ArrayListM from "../model/ArrayListM.mjs";
 import TableManager from "../model/TableManager.mjs";
 
-
 const sizeArrayInput = document.getElementById("number-size");
 const btnSizeArray = document.getElementById("btn-sizeArray");
 const indexInput = document.getElementById("index-ipt");
@@ -48,7 +47,7 @@ btnMerge.addEventListener("click", () => {
   const time = (end - start) / 1000;
   executionTimes.mergeSort.push(time);
   tableManager.createTable(array.getArray());
-  updateChart(); 
+  displayExecutionTimes();
 });
 
 btnBinarySearch.addEventListener("click", () => {
@@ -67,12 +66,16 @@ btnBinarySearch.addEventListener("click", () => {
   }
 
   tableManager.createTable(array.getArray());
-  updateChart();
+  displayExecutionTimes();
 });
 
 btnLinearSearch.addEventListener("click", () => {
   const target = parseInt(searchInput.value);
+  const start = performance.now();
   const result = array.linearSearch(target);
+  const end = performance.now();
+  const time = (end - start) / 1000;
+  executionTimes.linearSearch.push(time);
 
   if (result) {
     const [num1, num2] = result;
@@ -82,22 +85,33 @@ btnLinearSearch.addEventListener("click", () => {
   }
 
   tableManager.createTable(array.getArray());
+  displayExecutionTimes();
 });
 
 btnFindPairs.addEventListener("click", () => {
   const target = parseInt(sumTargetInput.value);
+  const start = performance.now();
   const pairs = array.findPairsWithSum(target);
+  const end = performance.now();
+  const time = (end - start) / 1000;
+  executionTimes.findPairsWithSum.push(time);
+
   if (pairs.length > 0) {
     searchResultDisplay.textContent = `Pares encontrados: ${pairs.map(pair => `[${pair[0]}, ${pair[1]}]`).join(', ')}`;
   } else {
     searchResultDisplay.textContent = 'No se encontraron pares con esa suma';
   }
   tableManager.createTable(array.getArray());
+  displayExecutionTimes();
 });
 
 btnCuadratica.addEventListener("click", () => {
   const target = parseInt(searchCuadratica.value);
+  const start = performance.now();
   const pairs = array.sumaDeK(target);
+  const end = performance.now();
+  const time = (end - start) / 1000;
+  executionTimes.sumaDeK.push(time);
 
   if (pairs.length > 0) {
     searchResultDisplay.textContent = `Pares encontrados: ${pairs.map(pair => `[${pair[0]}, ${pair[1]}]`).join(', ')}`;
@@ -105,46 +119,19 @@ btnCuadratica.addEventListener("click", () => {
     searchResultDisplay.textContent = 'No se encontraron pares con esa suma';
   }
   tableManager.createTable(array.getArray());
+  displayExecutionTimes();
 });
 
-function updateChart() {
-  const ctx = document.getElementById('chart').getContext('2d');
-  const chart = new Chart(ctx, {
-    type: 'bar', 
-    data: {
-      labels: ['mergeSort', 'binarySearch', 'linearSearch', 'findPairsWithSum', 'sumaDeK'],
-      datasets: [{
-        label: 'Execution Time (seconds)',
-        data: [
-          executionTimes.mergeSort[executionTimes.mergeSort.length - 1] || 0,
-          executionTimes.binarySearch[executionTimes.binarySearch.length - 1] || 0,
-          executionTimes.linearSearch[executionTimes.linearSearch.length - 1] || 0,
-          executionTimes.findPairsWithSum[executionTimes.findPairsWithSum.length - 1] || 0,
-          executionTimes.sumaDeK[executionTimes.sumaDeK.length - 1] || 0
-        ],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)'
-        ],
-        borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)'
-        ],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
+function displayExecutionTimes() {
+  document.getElementById("mergeSortTime").textContent = (executionTimes.mergeSort[executionTimes.mergeSort.length - 1] || 0).toFixed(4);
+  document.getElementById("binarySearchTime").textContent = (executionTimes.binarySearch[executionTimes.binarySearch.length - 1] || 0).toFixed(4);
+  document.getElementById("linearSearchTime").textContent = (executionTimes.linearSearch[executionTimes.linearSearch.length - 1] || 0).toFixed(4);
+  document.getElementById("findPairsTime").textContent = (executionTimes.findPairsWithSum[executionTimes.findPairsWithSum.length - 1] || 0).toFixed(4);
+  document.getElementById("sumaDeKTime").textContent = (executionTimes.sumaDeK[executionTimes.sumaDeK.length - 1] || 0).toFixed(4);
 }
+
+// eduardo
+$(document).ready(function() {
+  $('#myTable').DataTable();
+  $('#timesTable').DataTable();
+});

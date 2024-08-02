@@ -8,7 +8,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/2.1.2/js/dataTables.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
+
     <title>Complejidad Algoritmica</title>
 </head>
 <body>
@@ -45,6 +45,10 @@
             <button id="btn-findPairs">Buscar Pares</button>
         </div>
         
+        <div class="searchPair">
+            <input type="number" id="sum-cuadratica" placeholder="Ingrese la suma objetivo">
+            <button id="btn-Cuadratica">Buscar Pares (Cuadratica)</button>
+        </div>
         
     
     </div>
@@ -54,10 +58,40 @@
     </div>
 
         
-    <div id="chart-container">
-        <canvas id="chart"></canvas>
+   
+    <div id="execution-times">
+        <h2>Tiempos de Ejecución</h2>
+        <table id="timesTable" class="display">
+            <thead>
+                <tr>
+                    <th>Algoritmo</th>
+                    <th>Último Tiempo (segundos)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Merge Sort</td>
+                    <td id="mergeSortTime">0</td>
+                </tr>
+                <tr>
+                    <td>Búsqueda Binaria</td>
+                    <td id="binarySearchTime">0</td>
+                </tr>
+                <tr>
+                    <td>Búsqueda Lineal</td>
+                    <td id="linearSearchTime">0</td>
+                </tr>
+                <tr>
+                    <td>Buscar Pares</td>
+                    <td id="findPairsTime">0</td>
+                </tr>
+                <tr>
+                    <td>Suma de K</td>
+                    <td id="sumaDeKTime">0</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-
     <script type="module" src="../WithSayu/src/controller/script.mjs"></script>
 </body>
 </html>
