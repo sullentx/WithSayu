@@ -1,5 +1,6 @@
 import ArrayListM from "../model/ArrayListM.mjs";
 import TableManager from "../model/TableManager.mjs";
+import Mapita from "../model/Mapita.mjs";
 
 const sizeArrayInput = document.getElementById("number-size");
 const btnSizeArray = document.getElementById("btn-sizeArray");
@@ -13,7 +14,7 @@ const searchInput = document.getElementById("search-ipt");
 const btnLinearSearch = document.getElementById("btn-linearSearch");
 const btnFindPairs = document.getElementById("btn-findPairs");
 const sumTargetInput = document.getElementById("sum-target");
-
+const btnSumConst = document.getElementById("sumConst-btn");
 
 let array = new ArrayListM();
 let tableManager = new TableManager('array-display');
@@ -67,3 +68,14 @@ btnFindPairs.addEventListener("click", () => {
     }
     tableManager.createTable(array.getArray());
   });
+
+  btnSumConst.addEventListener("click", () => {
+    const target = parseInt(sumTargetInput.value);
+    const result = array.SumaKConstante(target);
+    if (result.pair) {
+        searchResultDisplay.textContent = `Pares encontrados: [${result.pair[0]}, ${result.pair[1]}] en ${result.time.toFixed(2)} ms`;
+    } else {
+        searchResultDisplay.textContent = `No se encontraron pares con la suma ${target}. Tiempo: ${result.time.toFixed(2)} ms`;
+    }
+    tableManager.createTable(array.getArray());
+});

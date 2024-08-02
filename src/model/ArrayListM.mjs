@@ -1,4 +1,4 @@
-
+import Mapita from "./Mapita.mjs";
 export default class ArrayListM {
     constructor() {
       this.array = [];
@@ -91,6 +91,24 @@ export default class ArrayListM {
         }
     
         return pairs;
+    }
+
+    SumaKConstante(K) {
+      const start = performance.now();
+      const datitoRegistrado = new Mapita();
+  
+      for (let i = 0; i < this.arrayChiquito.length; i++) {
+          const complement = K - this.arrayChiquito[i];
+          if (datitoRegistrado.has(complement)) {
+              const end = performance.now();
+              const totalTime = end - start;
+              return { pair: [this.arrayChiquito[i], complement], time: totalTime };
+          }
+          datitoRegistrado.set(this.arrayChiquito[i], i);
       }
+  
+      const end = performance.now();
+      return { pair: null, time: end - start };
+    }
   }
   
