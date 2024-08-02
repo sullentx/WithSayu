@@ -5,56 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.2/css/dataTables.dataTables.min.css">
-    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
     <script src="https://cdn.datatables.net/2.1.2/js/dataTables.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
     <title>Complejidad Algoritmica</title>
 </head>
 <body>
     <div class="title-h1">
         <h1>Complejidad Algoritmica</h1>
     </div>
+    <div class="daddy">
+        <div class="size">  
+            <label for="number-size">Tamaño del Array</label>
+            <input type="text" placeholder="Number" id="number-size">
+            <button id="btn-sizeArray">Generar</button>
+        </div>
 
-    <div class="size">
-        <label for="number-size">Tamaño del Array</label>
-        <input type="text" placeholder="Number" id="number-size">
-        <button id="btn-sizeArray">Generar</button>
+        <div class="stuffed">   
+            <label for="index-ipt">Índice del Elemento</label>
+            <input type="text" id="index-ipt" placeholder="Index">
+            <label for="stuffed-ipt">Rellene el Array</label>
+            <input type="text" id="stuffed-ipt" placeholder="Element">
+            <button id="btn-rellenar">Rellenar</button>
+        </div>
+
+        <div class="search">
+            <label for="search-ipt">Elemento a Buscar</label>
+            <input type="text" id="search-ipt" placeholder="Element">
+            <button id="btn-binarySearch">Buscar (Busqueda Binaria)</button>
+            <button id="btn-linearSearch">Buscar (Busqueda Lineal)</button>
+            <button id="method-merge">Merge</button>
+            <div id="search-result"></div>
+        </div>
+        
+        <div class="find-pairs">
+            <label for="sum-target">Suma Objetivo</label>
+            <input type="number" id="sum-target" placeholder="Ingrese la suma objetivo">
+            <button id="btn-findPairs">Buscar Pares</button>
+        </div>
+        
+        
+    
     </div>
-
-    <div class="stuffed">
-        <label for="index-ipt">Índice del Elemento</label>
-        <input type="text" id="index-ipt" placeholder="Index">
-        <label for="stuffed-ipt">Rellene el Array</label>
-        <input type="text" id="stuffed-ipt" placeholder="Element">
-        <button id="btn-rellenar">Rellenar</button>
-    </div>
-
-    <button id="method-merge">Merge</button>
-
-    <div class="search">
-        <label for="search-ipt">Elemento a Buscar</label>
-        <input type="text" id="search-ipt" placeholder="Element">
-        <button id="btn-binarySearch">Buscar (Busqueda Binaria)</button>
-        <button id="btn-linearSearch">Buscar (Busqueda Lineal)</button>
-        <div id="search-result"></div>
-    </div>
-
-    <input type="number" id="sum-target" placeholder="Ingrese la suma objetivo">
-    <button id="btn-findPairs">Buscar Pares</button>
-    <button id="sumConst-btn">Suma Constante</button>
 
     <div id="array-display">
-        <table id="myTable" class="display">
-            
-        </table>
+        <table id="myTable" class="display"></table>
     </div>
 
-    
-    
-
-    <div id="array-display"></div>
+        
+    <div id="chart-container">
+        <canvas id="chart"></canvas>
+    </div>
 
     <script type="module" src="../WithSayu/src/controller/script.mjs"></script>
 </body>

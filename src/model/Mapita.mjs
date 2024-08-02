@@ -1,3 +1,4 @@
+
 class Mapita{
     constructor (){
         this.key = []
@@ -33,3 +34,5 @@ class Mapita{
     }
 }
 export default Mapita; 
+
+
